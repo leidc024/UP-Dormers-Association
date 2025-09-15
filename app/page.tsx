@@ -1,103 +1,149 @@
-import Image from "next/image";
+
+import Footer from "./components/landingPage/Footer";
+import InfoBox from "./components/landingPage/InfoBox";
+import Announcement from "./components/landingPage/Announcement";
+import Header from "./components/landingPage/Header";
+import Banner from "./components/landingPage/Banner";
+import { Button } from "@/components/ui/button"
+import SurveyBox from "./components/landingPage/Survey";
+import BackToTopButton from "@/components/ui/BacktoTopButton";
+import DormInfo from "./components/landingPage/DormInfo";
+import DormRequirements from "./components/landingPage/DormRequirements";
+import ImportantLinks from "./components/landingPage/Links";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen flex flex-col bg-white">
+      {/* Header Banner */}
+      <Banner />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      {/* Header Top: Logo + Titles */}
+      <Header />
+
+      {/* Content Container */}
+      <div className="flex-1 w-full">
+        {/* Row 1: Announcements */}
+        <section className="py-1">
+          <div className="max-w-[75rem] mx-auto px-6 sm:px-8">
+            <Announcement
+                title="10 August 2026 - UPDA 2026 RESULTS"
+                message={`
+                  The UPDA 2026 results are now available for incoming new first-year students 
+                  for AY 2026-2027. Please click on the 'UPCAT 2025 APPLICATION STATUS' button 
+                  to view the results. Login using the application portal credentials.<br /><br />
+                  For qualifiers, please reply to the offer on or before 
+                  <strong>31 AUG 2026</strong>.<br /><br />
+                  For inquiries and further announcements, please visit the UP Cebu Office of 
+                  Student Affairs Facebook page at 
+                  <a href="https://www.facebook.com/osa.upcebu" class="text-[#014421] underline">
+                    UP Cebu OSA
+                  </a>.
+                `}
+              />
+          </div>
+        </section>
+
+        {/* Row 2: Two-column layout */}
+        <main className="max-w-[75rem] mx-auto flex flex-col lg:flex-row flex-1 py-8 gap-8 px-6 sm:px-8">
+          {/* Left Column */}
+          <div className="flex-1 space-y-6">
+            <InfoBox
+              title="ADMISSION TO THE DORMITORY "
+              message={ <DormRequirements /> }
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            
+            <InfoBox
+              title="Important Reminders"
+              message={
+                <ol className="list-decimal list-inside space-y-2">
+                  <li>Complete the form truthfully.</li>
+                  <li>Note that not all applicants can be accommodated in the dormitory.</li>
+                  <li>Only fully completed requirements will be considered for processing.</li>
+                </ol>
+              }
+            />
+
+            <InfoBox
+              title="DORMITORY CAPACITY AND RATES"
+              message={ <DormInfo /> }
+            />
+          </div>
+
+            {/* Add more InfoBoxes or content here */}
+          
+
+          {/* Right Column */}
+          <aside className="w-full lg:w-80 space-y-6">
+            <InfoBox
+              title="Important Links"
+              message= {<ImportantLinks />}
+            />
+            
+            <InfoBox
+                title="Contact Information"
+                message={
+                  <div className="space-y-2">
+                    <p>
+                      For questions, concerns, and other information, you may contact the
+                      following:
+                    </p>
+                    <p>
+                      <b>Dormitory Manager:<br /></b>{" "}
+                      <a
+                        href="mailto:dorm.upcebu@up.edu.ph"
+                        style={{ color: "#337AB7" }}
+                      >
+                        dorm.upcebu@up.edu.ph
+                      </a>
+                    </p>
+                    <p>
+                      <b>UP Dormers’ Association:</b>{" "}
+                      <a
+                        href="mailto:upcebu.upda@gmail.com"
+                        style={{ color: "#337AB7" }}
+                      >
+                        upcebu.upda@gmail.com
+                      </a>
+                    </p>
+                  </div>
+                }
+              />
+
+                <Button asChild variant="outline" className="w-full text-sm text-[#7B1113] hover:bg-gray-300">
+                      <a 
+                        href="https://privacy.up.edu.ph/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        PRIVACY NOTICE
+                      </a>
+                    </Button>
+
+                <Button asChild variant="outline" className="w-full text-sm text-[#7B1113] hover:bg-gray-300">
+                      <a 
+                        href="https://www.upcebu.edu.ph/wp-content/uploads/2025/07/UP-Cebu-Citizens-Charter-5th-edition_2025-1-copy.pdf" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        CITIZEN'S CHARTER
+                      </a>
+                    </Button>
+             {/* QR Survey */}
+            <SurveyBox />
+            {/* Add more right-side boxes if needed */}
+          </aside>
+        </main>
+      </div>
+
+      {/* Footer */}
+      <div className="bg-gray-50 mt-8">
+        <div className="max-w-[75rem] mx-auto px-6 sm:px-8">
+          <Footer />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* Floating Back to Top button */}
+      <BackToTopButton />
     </div>
   );
 }
