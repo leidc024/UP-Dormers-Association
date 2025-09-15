@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UP Dormers Association - Online Application Platform
 
-## Getting Started
+Automating and digitizing the University of the Philippines Dormitory Association’s dormitory application process.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*   **Online Application Portal:** Applications made easier and convenient.
+*   **Admin Dashboard:** Easily Manage Applications.
+*   **Mobile Responsiveness:** Seamless experience across devices.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-github-repo-url>
+    cd <directory>
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Set up environment variables:**
+    Create  `.env.local` in the root directory of the project and add the following environment variables:
+    ```bash
+     
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+      #clerk
 
-## Learn More
+      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_ZW1lcmdpbmctYmVldGxlLTguY2xlcmsuYWNjb3VudHMuZGV2JA
+      CLERK_SECRET_KEY=sk_test_8WHE2QxsgTcUgqcSg1xPdBGLez6i57JNpGkShYmNkG
+      CLERK_WEBHOOK_SECRET=whsec_upISQYjw4xSXQeOSbpF2cf+Guebx1X1t
+      NEXT_PUBLIC_CLERK_SIGN_IN_URL=/apply
+      NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/
+      NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/
+      
+      #supabase
+      
+      
+      NEXT_PUBLIC_SUPABASE_URL=https://zturydvwoakbvmoqzuxw.supabase.co                                   
+      NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmF
+      zZSIsInJlZiI6Inp0dXJ5ZHZ3b2FrYnZtb3F6dXh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc4NTEzNDEsImV4cCI6MjA3MzQyNzM0MX0.sS6gWjTCBVEhuf6Thh_Nqqio2nzuIqMkKP96UJKHwew
+      SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0dXJ5ZHZ3b2FrYnZtb3F6dXh3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdC
+      I6MTc1Nzg1MTM0MSwiZXhwIjoyMDczNDI3MzQxfQ.W83YMgqAmwe-5jq5v1s2YnaVdly6ZtJzlKhy3UW6YX0
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
