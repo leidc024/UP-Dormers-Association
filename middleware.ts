@@ -13,15 +13,33 @@ export default clerkMiddleware(async (auth, req) => {
   if (!userId) return NextResponse.next(); // not signed in yet
 
   // Fetch user role
-  const { data, error } = await supabase
+  let { data, error } = await supabase
     .from("users")
     .select("role")
     .eq("clerk_id", userId)
     .single();
 
+  // If user not found, create minimal user record immediately
   if (error || !data) {
-    console.error("Middleware Supabase error:", error);
-    return NextResponse.redirect(new URL("/error", req.url));
+    console.log("User not found in Supabase, creating minimal record for:", userId);
+    
+    // Create minimal user record with default role
+    const { error: insertError } = await supabase
+      .from("users")
+      .insert({
+        clerk_id: userId,
+        role: "applicant", // default role
+        email: "", // will be updated by webhook later
+        full_name: "" // will be updated by webhook later
+      });
+
+    if (insertError) {
+      console.error("Failed to create minimal user record:", insertError);
+      return NextResponse.redirect(new URL("/error", req.url));
+    }
+
+    // Set default role for new user
+    data = { role: "applicant" };
   }
 
   const role = data.role;
@@ -32,7 +50,7 @@ export default clerkMiddleware(async (auth, req) => {
     if (role === "admin") {
       url.pathname = "/dashboard";
     } else {
-      url.pathname = "/form";
+      url.pathname = "/invalid";
     }
     return NextResponse.redirect(url);
   }
@@ -40,7 +58,7 @@ export default clerkMiddleware(async (auth, req) => {
   // 🔒 Role-based protection
   if (url.pathname.startsWith("/dashboard") && role !== "admin") {
     // applicant tried to enter admin
-    url.pathname = "/form";
+    url.pathname = "/apply";
     return NextResponse.redirect(url);
   }
 

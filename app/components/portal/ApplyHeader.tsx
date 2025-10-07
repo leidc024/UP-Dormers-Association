@@ -34,7 +34,7 @@ const ApplyHeader = () => {
               fontFamily: 'Helvetica Neue, Helvetica, Arial, sans-serif',
             }}
           >
-            UPDA Online Application
+            UPDA Admin Management
           </h1>
           <h2
             className="font-normal text-[#014421] text-[18px]"

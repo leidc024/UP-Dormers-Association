@@ -20,14 +20,16 @@ export async function syncUser(clerkUser: ClerkUser) {
     return { error: 'Missing required user fields' }
   }
 
-  const { error } = await supabase.from('users').insert([
+  const { error } = await supabase.from('users').upsert([
     {
       clerk_id: clerkId,
       email,
       full_name: fullName,
       role: 'applicant', // default role
     },
-  ])
+  ], {
+    onConflict: 'clerk_id' // update on conflict with clerk_id
+  })
 
   if (error) {
     console.error('Supabase insert error:', error)
@@ -36,4 +38,4 @@ export async function syncUser(clerkUser: ClerkUser) {
 
   return { success: true }
 }
-// This function syncs a Clerk user to the Supabase database, inserting their details if they don't already exist.
+// This function syncs a Clerk user to the Supabase database, upserting their details (insert or update if they already exist).
