@@ -5,12 +5,13 @@ import Link from "next/link";
 const ImportantLinks = () => {
   return (
     <div>
-      
+      <Link href="/apply" passHref>
         <div>
           <Button className="w-full bg-[#7B1113] text-sm text-white hover:bg-[#8c1a20]">
             UPDA ONLINE APPLICATION
           </Button>
         </div>
+        </Link>
       
       <Link href="/admin" passHref>
       <div className='py-6'>

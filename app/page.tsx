@@ -109,7 +109,7 @@ export default function Home() {
                 }
               />
 
-                <Button asChild variant="outline" className="w-full text-sm text-[#7B1113] hover:bg-gray-300">
+                <Button asChild variant="outline" className="w-full font-bold text-sm text-[#7B1113] hover:bg-gray-300">
                       <a 
                         href="https://privacy.up.edu.ph/" 
                         target="_blank" 
@@ -119,7 +119,7 @@ export default function Home() {
                       </a>
                     </Button>
 
-                <Button asChild variant="outline" className="w-full text-sm text-[#7B1113] hover:bg-gray-300">
+                <Button asChild variant="outline" className="w-full text-sm font-bold text-[#7B1113] hover:bg-gray-300">
                       <a 
                         href="https://www.upcebu.edu.ph/wp-content/uploads/2025/07/UP-Cebu-Citizens-Charter-5th-edition_2025-1-copy.pdf" 
                         target="_blank" 
