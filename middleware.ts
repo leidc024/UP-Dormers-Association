@@ -35,7 +35,8 @@ export default clerkMiddleware(async (auth, req) => {
 
     if (insertError) {
       console.error("Failed to create minimal user record:", insertError);
-      return NextResponse.redirect(new URL("/error", req.url));
+      // Redirect to invalid page instead of error for new users
+      return NextResponse.redirect(new URL("/invalid", req.url));
     }
 
     // Set default role for new user
